@@ -2,7 +2,7 @@
  
 # Features
  
-You can easily get the download link for Minecraft Bedrock Server.
+You can easily run Minecraft Bedrock Server.
  
 # Requirement
  
@@ -11,16 +11,16 @@ golang 1.19
 # Installation
  
 ```bash
-pacman -Syyu --noconfirm
-pacman -S go --noconfirm
-go build ./get.go
-chmod +x ./get
+sudo pacman -Syyu --noconfirm
+sudo pacman -S go --noconfirm
+sudo go build ./run.go
+sudo chmod +x ./run
 ```
  
 # Usage
  
 ```bash
-./get
+sudo ./run
 ```
  
 # Author

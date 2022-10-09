@@ -1,4 +1,4 @@
-module github.com/ES-Yukun/Get-Latest-MCBE-Server-DL-Link
+module github.com/ES-Yukun/RunLatestMCBE
 
 go 1.19
 
