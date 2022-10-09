@@ -1,5 +1,7 @@
 FROM archlinux:latest
-RUN  pacman -Syyu --noconfirm go 
+RUN  pacman -Syyu --noconfirm unzip
 COPY ./run /root
-RUN chmod 777 /root/run
-CMD /root/run
+COPY main.sh /root/
+COPY buckup.sh /root/
+RUN chmod 777 /root/run /root/main.sh
+CMD [ "/bin/bash","-c","/root/main.sh" ]

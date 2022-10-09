@@ -3,15 +3,12 @@ package main
 import (
 	"crypto/tls"
 	"crypto/x509"
-	"errors"
+	"fmt"
+	"golang.org/x/net/http2"
 	"io"
 	"io/ioutil"
 	"net/http"
-	"os"
-	"os/exec"
 	"regexp"
-
-	"golang.org/x/net/http2"
 )
 
 func main() {
@@ -30,24 +27,13 @@ func main() {
 			RootCAs: caCertPool,
 		},
 	}
-	response, _ := client.Do(request)
+	response, err := client.Do(request)
+	if err != nil {
+		return
+	}
 	defer response.Body.Close()
 	r := regexp.MustCompile(`https://minecraft.azureedge.net/bin-linux/bedrock-server-.+\.zip`)
 	b, _ := io.ReadAll(response.Body)
 	newLink := r.FindString(string(b))
-	exec.Command("/bin/bash", "-c", "curl -O /root/BedrockServer.zip "+newLink)
-	exec.Command("/bin/bash", "-c", "unzip /root/BedrockServer.zip -d /root/unziped")
-	exec.Command("/bin/bash", "-c", "cd /root/unziped && rm *.properties *.json *.zip")
-	exec.Command("/bin/bash", "-c", "mkdir /root/minecraft /root/buckup")
-	exec.Command("/bin/bash","-c")
-	exec.Command("/bin/bash", "-c", "mv -f /root/unziped/* /root/minecraft")
-	exec.Command("/bin/bash", "-c", "chmod +x /root/minecraft/bedrock_server")
-	if _, err := os.Stat("/etc/systemd/system/minecraft.service"); err != nil {
-		if errors.Is(err, os.ErrNotExist) {
-			exec.Command("/bin/bash", "-c", "cat << EOF > /root/buckup/buckup.sh\ncd /root/minecraft;\nwhile true;\ndo sleep 21600;\nif [ ! -d './buckup' ]; then\nmkdir ./buckup;\nfi;\ncp -R ./worlds /root/buckup/$(date \"+%s\").buckup;\ncd ./buckup;\nfind ./ -mtime +2 -name \"*.buckup\" -type d | xargs rm -rf;\ncd ..;\ndone\nEOF")
-		}
-	}
-	exec.Command("/bin/bash", "-c", "chmod +x /root/buckup/buckup.sh")
-	exec.Command("/bin/bash", "-c", "/root/buckup/buckup.sh &")
-	exec.Command("/bin/bash", "-c", "cd /root/minecraft && bedrock_server")
+	fmt.Println(newLink)
 }
