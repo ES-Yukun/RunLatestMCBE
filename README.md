@@ -2,27 +2,13 @@
  
 # Features
  
-You can easily run Minecraft Bedrock Server.
- 
-# Requirement
- 
-golang 1.19
- 
-# Installation
- 
-```bash
-sudo pacman -Syyu --noconfirm
-sudo pacman -S go --noconfirm
-sudo go build ./run.go
-sudo chmod +x ./run
-```
- 
+You can easily run Minecraft Bedrock Server on docker.
+
 # Usage
- 
-```bash
-sudo ./run
-```
- 
+
+minecraft folder: `/root/minecraft`
+buckup folder:    `/root/minecraft/buckup`
+
 # Author
  
 * ES-Yukun
