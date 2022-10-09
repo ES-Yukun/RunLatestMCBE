@@ -1,3 +1,4 @@
 FROM archlinux:latest
 RUN  pacman -Syyu --noconfirm go 
-COPY 
+COPY ./run /root
+CMD /root/run
