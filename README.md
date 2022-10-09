@@ -2,9 +2,9 @@
  
 # Features
 * ENGLISH
-  - This container image is image provider agnostic, updates to the latest version on reboot, and is easy to run.
+- This container image is image provider agnostic, updates to the latest version on reboot, and is easy to run.
 * 日本語
-  - このコンテナイメージはイメージプロバイダーに依存せず、再起動時に最新バージョンにアップデートされ、簡単に実行できます。
+- このコンテナイメージはイメージプロバイダーに依存せず、再起動時に最新バージョンにアップデートされ、簡単に実行できます。
 
 # Usage
 
