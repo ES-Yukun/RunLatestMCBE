@@ -7,6 +7,7 @@ You can easily run Minecraft Bedrock Server on docker.
 # Usage
 
 minecraft folder: `/root/minecraft`
+
 buckup folder:    `/root/minecraft/buckup`
 
 # Author
