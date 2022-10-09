@@ -3,9 +3,11 @@ package main
 import (
 	"crypto/tls"
 	"crypto/x509"
-	"io/exec"
+	"errors"
+	"io"
 	"io/ioutil"
 	"net/http"
+	"os"
 	"os/exec"
 	"regexp"
 
@@ -42,20 +44,7 @@ func main() {
 	exec.Command("/bin/bash", "-c", "chmod +x /root/minecraft/bedrock_server")
 	if _, err := os.Stat("/etc/systemd/system/minecraft.service"); err != nil {
 		if errors.Is(err, os.ErrNotExist) {
-			exec.Command(
-				"/bin/bash", "-c", "cat << EOF > /root/buckup/buckup.sh
-				while true;
-					do sleep 21600;
-					if [ ! -d './buckup' ]; then
-						mkdir ./buckup;
-					fi;
-					cp -R ./worlds /root/buckup/$(date \"+\%s\").buckup;
-					cd ./buckup;
-						find ./ -mtime +2 -name \"*.buckup\" -type d | xargs rm -rf;
-					cd ..;
-				done
-				EOF"
-			)
+			exec.Command("/bin/bash", "-c", "cat << EOF > /root/buckup/buckup.sh\nwhile true;\ndo sleep 21600;\nif [ ! -d './buckup' ]; then\nmkdir ./buckup;\nfi;\ncp -R ./worlds /root/buckup/$(date \"+%s\").buckup;\ncd ./buckup;\nfind ./ -mtime +2 -name \"*.buckup\" -type d | xargs rm -rf;\ncd ..;\ndone\nEOF")
 		}
 	}
 	exec.Command("/bin/bash", "-c", "chmod +x /root/buckup/buckup.sh")
