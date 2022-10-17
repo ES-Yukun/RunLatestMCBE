@@ -21,7 +21,7 @@ if [ $FLAG = "TRUE" ]; then
     fi;
     rm /root/unzip/server.properties
     if [ ! -e /root/minecraft/allowlist.json ]; then
-        cp /root/unzip/allowlist.json root/minecraft
+        cp /root/unzip/allowlist.json /root/minecraft
     fi;
     rm /root/unzip/allowlist.json
     if [ ! -e /root/minecraft/permissions.json ]; then
