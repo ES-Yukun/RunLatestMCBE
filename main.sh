@@ -1,3 +1,5 @@
+#!/bin/bash
+
 FLAG="FALSE"
 if [ ! -e /root/minecraft/version.txt ]; then
 mkdir /root/minecraft 
