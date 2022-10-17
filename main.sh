@@ -13,7 +13,7 @@ fi;
 if [ $FLAG = "TRUE" ]; then 
     chmod +x /root/buckup.sh /root/run
     /root/buckup.sh &
-    curl -o /root/bedrock_server.zip $(/root/run)
+    curl -sLo /root/bedrock_server.zip $(/root/run)
     unzip /root/bedrock_server.zip -d /root/unzip
     if [ ! -e /root/minecraft/server.properties ]; then
         echo -e "\nemit-server-telemetry=true\n" >> /root/unzip/server.properties
