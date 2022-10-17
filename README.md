@@ -17,9 +17,8 @@ docker run --name minecraft-bedrock-server -p 19132:19132/udp docheio/minecraft-
 
 # Author
  
-* ES-Yukun
 * Anylinks Japan
-* yukun@team.anylinks.jp
+  - SE-Yukun - yukun@team.anylinks.jp
  
 # License
  
