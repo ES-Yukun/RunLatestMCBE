@@ -1,3 +1,5 @@
+#!/bin/bash
+
 cd /root/minecraft;
 while true;
     do sleep 21600;
